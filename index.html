@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.62/Build/Cesium/Cesium.js"></script>
+    <style>
+      @import url('https://cesium.com/downloads/cesiumjs/releases/1.62/Build/Cesium/Widgets/widgets.css');
+      html, body {padding: 0; margin: 0;}
+      #map {top: 0; right: 0; bottom: 0; left: 0; position: absolute !important;}
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var viewer = new Cesium.Viewer('map', {
+        animation: false,
+        baseLayerPicker: false,
+        navigationHelpButton: false,
+        sceneModePicker: false,
+        homeButton: false,
+        geocoder: false,
+        fullscreenButton: false,
+        imageryProvider: new Cesium.UrlTemplateImageryProvider({
+          url: 'https://api.maptiler.com/tiles/df5ba71d-ce3a-4777-8cd7-3552d16e22a7/{z}/{x}/{y}.png?key=EZxE84baCWXsC6SuSFKc',
+          tileWidth: 256,
+          tileHeight: 256,
+          credit: new Cesium.Credit("Rendered with \u003ca href=\"https://www.maptiler.com/desktop/\"\u003eMapTiler Desktop\u003c/a\u003e", true)
+        }),
+        timeline: false
+      });
+      viewer.camera.setView({
+        destination: Cesium.Cartesian3.fromDegrees(10, 50, 8000000)
+      });
+    </script>
+  </body>
+</html>
